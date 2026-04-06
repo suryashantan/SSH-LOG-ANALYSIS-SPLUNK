@@ -36,7 +36,7 @@ It simulates a real-world SOC investigation scenario and maps detections to MITR
   * `index = ssh_logs`
 
 📸 Screenshot:
-![Data Ingestion](screenshots/task1_log_parsing.png)
+![Data Ingestion](screenshots/task1_log_parsing.jpg)
 
 ---
 
@@ -56,7 +56,7 @@ index=ssh_logs 
 ```
 
 📸 Screenshot:
-![Log Parsing](screenshots/task1_log_parsing.png)
+![Log Parsing](screenshots/task1_log_parsing.jpg)
 
 ---
 
@@ -72,8 +72,8 @@ index=ssh_logs event_type="Failed SSH Login"
 ```
 
 📸 Screenshots:
-![Failed Login Stats](screenshots/task2_failed_logins_stats.png)
-![Failed Login Chart](screenshots/task2_failed_logins_chart.png)
+![Failed Login Stats](screenshots/task2_failed_logins_stats.jpg)
+![Failed Login Chart](screenshots/task2_failed_logins_chart.jpg)
 
 ---
 
@@ -87,7 +87,7 @@ index=ssh_logs event_type="Multiple Failed Authentication Attempts"
 ```
 
 📸 Screenshot:
-![Brute Force](screenshots/task3_bruteforce.png)
+![Brute Force](screenshots/task3_bruteforce.jpg)
 
 ---
 
@@ -101,7 +101,7 @@ index=ssh_logs event_type="Successful ssh login"
 ```
 
 📸 Screenshot:
-![Successful Logins](screenshots/task4_successful_logins.png)
+![Successful Logins](screenshots/task4_successful_logins.jpg)
 
 ---
 
@@ -115,7 +115,7 @@ index=ssh_logs event_type="Connection Without Authentication"
 ```
 
 📸 Screenshot:
-![Suspicious Connections](screenshots/task5_suspicious_connections.png)
+![Suspicious Connections](screenshots/task5_suspicious_connections.jpg)
 
 ---
 
