@@ -29,7 +29,7 @@ This project demonstrates real-world SSH log analysis using Splunk SIEM to detec
 Logs were uploaded and verified in Splunk.
 
 📸
-![Log Ingestion](screenshots/1_log_ingestion_validation.jpg)
+![Log Ingestion](screenshots/1_log_ingestion_validation..jpg)
 
 ---
 
@@ -42,7 +42,7 @@ index=ssh_logs | stats count by event_type
 ```
 
 📸
-![Log Parsing](screenshots/1_log_ingestion_validation.jpg)
+![Log Parsing](screenshots/1_log_ingestion_validation..jpg)
 
 ---
 
@@ -56,10 +56,10 @@ index=ssh_logs event_type="Failed SSH Login"
 ```
 
 📸 Top attacking IPs:
-![Failed Login Stats](screenshots/2_failed_login_attempts_by_ip.jpg)
+![Failed Login Stats](screenshots/2_failed_login_attempts_by_ip..jpg)
 
 📸 Visualization:
-![Failed Login Chart](screenshots/3_failed_login_visualization.jpg)
+![Failed Login Chart](screenshots/3_failed_login_visualization..jpg)
 
 ---
 
@@ -73,13 +73,13 @@ index=ssh_logs event_type="Multiple Failed Authentication Attempts"
 ```
 
 📸 Raw data:
-![Brute Force Raw](screenshots/4_multiple_failed_authentication.jpg)
+![Brute Force Raw](screenshots/4_multiple_failed_authentication..jpg)
 
 📸 Filtered suspicious attempts:
-![Repeated Attempts](screenshots/5_repeated_failed_attempts.jpg)
+![Repeated Attempts](screenshots/5_repeated_failed_attempts..jpg)
 
 📸 Alert configuration:
-![Alert Setup](screenshots/6_brute_force_alert_config.jpg)
+![Alert Setup](screenshots/6_brute_force_alert_config..jpg)
 
 ---
 
@@ -93,7 +93,7 @@ index=ssh_logs event_type="Successful ssh login"
 ```
 
 📸 Successful logins:
-![Successful Logins](screenshots/7_successful_logins_stats.jpg)
+![Successful Logins](screenshots/7_successful_logins_stats..jpg)
 
 ---
 
@@ -109,10 +109,10 @@ index=ssh_logs (event_type="Successful SSH Login" OR event_type="Failed SSH Logi
 ```
 
 📸 Correlation table:
-![Login Correlation](screenshots/8_login_correlation.jpg)
+![Login Correlation](screenshots/8_login_correlation..jpg)
 
 📸 Visualization:
-![Correlation Chart](screenshots/9_correlation_barchart.jpg)
+![Correlation Chart](screenshots/9_correlation_barchart..jpg)
 
 ---
 
@@ -126,10 +126,10 @@ index=ssh_logs event_type="Connection Without Authentication"
 ```
 
 📸 Stats:
-![Unauthenticated Stats](screenshots/10_unauthenticated_stats.jpg)
+![Unauthenticated Stats](screenshots/10_unauthenticated_stats..jpg)
 
 📸 Time-based detection:
-![Timechart](screenshots/11_unauthenticated_timechart.jpg)
+![Timechart](screenshots/11_unauthenticated_timechart..jpg)
 
 ---
 
