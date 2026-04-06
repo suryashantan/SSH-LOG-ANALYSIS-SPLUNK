@@ -2,9 +2,7 @@
 
 ## 📌 Overview
 
-This project demonstrates SSH log analysis using Splunk SIEM to detect brute-force attacks, failed logins, successful logins, and suspicious connections.
-
-It simulates a real-world SOC investigation scenario and maps detections to MITRE ATT&CK.
+This project demonstrates real-world SSH log analysis using Splunk SIEM to detect brute-force attacks, failed logins, successful logins, and suspicious connections.
 
 ---
 
@@ -14,49 +12,37 @@ It simulates a real-world SOC investigation scenario and maps detections to MITR
 * Identify brute-force attacks
 * Track successful logins
 * Detect suspicious unauthenticated connections
-* Build visualizations and alerts in Splunk
 
 ---
 
 ## 🛠️ Lab Setup
 
-* Splunk Enterprise (SIEM)
-* Windows Virtual Machine
-* SSH logs dataset (JSON format)
-* Kali Linux (optional attacker machine)
+* Splunk Enterprise
+* Windows VM
+* SSH Logs (JSON)
+* Kali Linux (optional)
 
 ---
 
 ## ⚙️ Data Ingestion
 
-* Uploaded `ssh_logs.json` into Splunk
-* Configured:
+Logs were uploaded and verified in Splunk.
 
-  * `sourcetype = _json`
-  * `index = ssh_logs`
-
-📸 Screenshot:
-![Data Ingestion](screenshots/task1_log_parsing.jpg)
+📸
+![Log Ingestion](screenshots/1_log_ingestion_validation.jpg)
 
 ---
 
 ## 🔍 Task 1: Log Parsing
 
-Extracted fields:
-
-* event_type
-* id.orig_h (Source IP)
-* id.resp_h (Destination IP)
-
 **Query:**
 
 ```
-index=ssh_logs 
-| stats count by event_type
+index=ssh_logs | stats count by event_type
 ```
 
-📸 Screenshot:
-![Log Parsing](screenshots/task1_log_parsing.jpg)
+📸
+![Log Parsing](screenshots/1_log_ingestion_validation.jpg)
 
 ---
 
@@ -66,14 +52,14 @@ index=ssh_logs 
 
 ```
 index=ssh_logs event_type="Failed SSH Login"
-| stats count by id.orig_h 
-| sort -count 
-| head 10
+| stats count by id.orig_h | sort -count | head 10
 ```
 
-📸 Screenshots:
-![Failed Login Stats](screenshots/task2_failed_logins_stats.jpg)
-![Failed Login Chart](screenshots/task2_failed_logins_chart.jpg)
+📸 Top attacking IPs:
+![Failed Login Stats](screenshots/2_failed_login_attempts_by_ip.jpg)
+
+📸 Visualization:
+![Failed Login Chart](screenshots/3_failed_login_visualization.jpg)
 
 ---
 
@@ -86,8 +72,14 @@ index=ssh_logs event_type="Multiple Failed Authentication Attempts"
 | stats count by id.orig_h, id.resp_h
 ```
 
-📸 Screenshot:
-![Brute Force](screenshots/task3_bruteforce.jpg)
+📸 Raw data:
+![Brute Force Raw](screenshots/4_multiple_failed_authentication.jpg)
+
+📸 Filtered suspicious attempts:
+![Repeated Attempts](screenshots/5_repeated_failed_attempts.jpg)
+
+📸 Alert configuration:
+![Alert Setup](screenshots/6_brute_force_alert_config.jpg)
 
 ---
 
@@ -100,31 +92,54 @@ index=ssh_logs event_type="Successful ssh login"
 | stats count by id.orig_h, id.resp_h
 ```
 
-📸 Screenshot:
-![Successful Logins](screenshots/task4_successful_logins.jpg)
+📸 Successful logins:
+![Successful Logins](screenshots/7_successful_logins_stats.jpg)
 
 ---
 
-## 🔍 Task 5: Suspicious Connections
+## 🔍 Task 5: Login Correlation (Very Important)
+
+Correlated failed + successful logins.
+
+**Query:**
+
+```
+index=ssh_logs (event_type="Successful SSH Login" OR event_type="Failed SSH Login")
+| stats count by id.orig_h, event_type
+```
+
+📸 Correlation table:
+![Login Correlation](screenshots/8_login_correlation.jpg)
+
+📸 Visualization:
+![Correlation Chart](screenshots/9_correlation_barchart.jpg)
+
+---
+
+## 🔍 Task 6: Suspicious Connections
 
 **Query:**
 
 ```
 index=ssh_logs event_type="Connection Without Authentication"
-| timechart count by id.orig_h
+| stats count by id.orig_h
 ```
 
-📸 Screenshot:
-![Suspicious Connections](screenshots/task5_suspicious_connections.jpg)
+📸 Stats:
+![Unauthenticated Stats](screenshots/10_unauthenticated_stats.jpg)
+
+📸 Time-based detection:
+![Timechart](screenshots/11_unauthenticated_timechart.jpg)
 
 ---
 
 ## 📊 Key Outcomes
 
 * Detected brute-force attack patterns
-* Identified suspicious login behavior
-* Created alerts for SOC monitoring
-* Visualized attack trends
+* Identified attacker IPs
+* Correlated failed and successful logins
+* Built alerting mechanism in Splunk
+* Detected reconnaissance activity
 
 ---
 
@@ -139,17 +154,8 @@ index=ssh_logs event_type="Connection Without Authentication"
 * Splunk SIEM
 * Log analysis & threat detection
 * SPL query writing
-* Security monitoring
+* Alert creation
 * Data visualization
-
----
-
-## 📌 Future Improvements
-
-* Add geo-IP enrichment
-* Integrate threat intelligence
-* Build advanced correlation rules
-* Create SOC dashboard
 
 ---
 
@@ -164,5 +170,3 @@ Aspiring SOC Analyst / VAPT Enthusiast
 
 If you found this useful, give this repo a star ⭐
 
-
-this is readme file , i want u to add screenshots links in it ,
