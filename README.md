@@ -149,13 +149,15 @@ index=ssh_logs event_type="Connection Without Authentication"
 
 ---
 
-## 🚀 Skills Demonstrated
+## 🔍 Skills Demonstrated
 
-* Splunk SIEM
-* Log analysis & threat detection
-* SPL query writing
-* Alert creation
-* Data visualization
+- Log Analysis using Splunk SIEM  
+- SSH Brute Force Attack Detection  
+- Incident Investigation & Response  
+- Threat Identification and Analysis  
+- SPL Query Writing  
+- Alert Creation in Splunk  
+- Data Visualization using Dashboards
 
 ---
 
